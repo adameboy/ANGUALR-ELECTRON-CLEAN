@@ -1,0 +1,20 @@
+<div class="vh-100 d-flex flex-column justify-content-between">
+    <!-- CAROUSEL -->
+    <app-carousel></app-carousel>
+
+    <div class="container mt-3">
+
+        <app-products [title]="'SERVICIOS'"></app-products>
+
+        <!-- FILL OF BUTTONS -->
+        <div class="w-100 d-flex justify-content-between mt-3">
+            <div style="width: 23%;" *ngFor="let route of routes">
+                <button routerLink="{{route.route}}" routerLinkActive="blue-button" class="btn orange-button w-100">
+                    <h3 class="m-0 p-0 text-light">{{route.name}}</h3>
+                </button>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+
+</div>
