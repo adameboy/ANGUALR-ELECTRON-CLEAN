@@ -40,14 +40,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.electron.net)
-    this.client = new this.electron.net.Socket;
-    this.client.connect(2021, '192.168.100.67', () => {
-      console.log('conexion iniciada');
-    });
+    // this.client = new this.electron.net.Socket;
+    // this.client.connect(2021, '192.168.1.156', () => {
+    //   console.log('conexion iniciada');
+    // });
 
-    this.client.on('data', (data) => {
-      this.action(data)
-    })
+    // this.client.on('data', (data) => {
+    //   this.action(data)
+    // })
   }
 
   action(data) {

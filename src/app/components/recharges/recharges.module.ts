@@ -9,7 +9,6 @@ import { RechargesComponent } from './recharges.component';
   imports: [
     CommonModule,
     RechargesRoutingModule,
-    SharedModule,
-  ]
+    SharedModule  ]
 })
 export class RechargesModule { }
