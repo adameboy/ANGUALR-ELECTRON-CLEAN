@@ -2,10 +2,25 @@
     <!-- CAROUSEL -->
     <app-carousel></app-carousel>
 
-    <div class="container mt-3">
+    <mat-horizontal-stepper [linear]='false' #stepper>
+        <mat-step>
+            <app-choose-balance></app-choose-balance>
+        </mat-step>
+        <mat-step>
+            <app-entry-number></app-entry-number>
+        </mat-step>
+        <mat-step>
+            <app-verify-amount></app-verify-amount>
+        </mat-step>
+        <mat-step>
+            <app-insert-money (stepperEvent)="stepperEvent(stepper)"></app-insert-money>
+        </mat-step>
+        <mat-step>
+            <h1>dasd</h1>
+        </mat-step>
+    </mat-horizontal-stepper>
 
- 
-    </div>
+
     <app-footer></app-footer>
 
 </div>

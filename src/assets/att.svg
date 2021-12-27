@@ -1,10 +1,10 @@
-<svg width="318" height="118" viewBox="0 0 318 118" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="317" height="211" viewBox="0 0 317 211" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g filter="url(#filter0_d_143_1978)">
-<rect x="16.0036" y="16" width="285.006" height="178.856" rx="13.087" fill="white"/>
+<rect x="16" y="16" width="285.006" height="178.856" rx="13.087" fill="white"/>
 </g>
-<rect x="81.0124" y="33.9719" width="143.991" height="143.056" fill="url(#pattern0)"/>
+<rect x="81.0088" y="33.9719" width="143.991" height="143.056" fill="url(#pattern0)"/>
 <defs>
-<filter id="filter0_d_143_1978" x="0.00835705" y="0.00478649" width="316.996" height="210.846" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_d_143_1978" x="0.00478649" y="0.00478649" width="316.996" height="210.846" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset/>

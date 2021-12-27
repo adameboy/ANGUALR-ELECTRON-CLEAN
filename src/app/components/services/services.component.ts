@@ -7,22 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServicesComponent implements OnInit {
   routes = [{
-    name:'VENDIDOS',
-    route:'/home'
+    name: 'VENDIDOS',
+    route: '/home'
   },
   {
-    name:'RECARGAS',
-    route:'/recharges'
+    name: 'RECARGAS',
+    route: '/recharges'
   },
   {
-    name:'SERVICIOS',
-    route:'/services'
+    name: 'SERVICIOS',
+    route: '/services'
   },
   {
-    name:'REPORTAR PROBLEMA',
-    route:'/support'
+    name: 'REPORTAR PROBLEMA',
+    route: '/support'
   },
-];
+  ];
+
+  services: string[] =
+    ['services/luz', 'services/agua', 'services/tv',
+      'services/internet', 'services/gas', 'services/telefono',
+      'services/entretenimiento', 'services/tag', 'services/impuestos',
+      'services/catalogo', 'services/otros',
+    ]
   constructor() { }
 
   ngOnInit(): void {

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { HelpService } from '../../services/help.service';
 
 @Component({
   selector: 'app-products',
@@ -6,9 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  @Input() title = ''; // decorate the property with @Input()
-  @Input() services = []; // decorate the property with @Input()
-
+  @Input() title = '';
+  @Input() services = [];
+  carrierSelected = '';
   routes = [{
     name: 'VENDIDOS',
     route: '/home'
@@ -26,7 +27,11 @@ export class ProductsComponent implements OnInit {
     route: '/support'
   },
   ];
-  constructor() { }
+
+  setCarrier(carrier: string) {
+    this.helpService.changeCarrier({ carrier, amount: 0 ,number:''});
+  }
+  constructor(private helpService: HelpService) { }
 
   ngOnInit(): void {
   }
