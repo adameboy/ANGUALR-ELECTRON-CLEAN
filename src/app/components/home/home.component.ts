@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Socket } from 'net';
 import { ElectronService } from '../../core/services/electron/electron.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -10,36 +11,43 @@ import { ElectronService } from '../../core/services/electron/electron.service';
 })
 export class HomeComponent implements OnInit {
   routes = [{
-    name:'VENDIDOS',
-    route:'/home'
+    name: 'VENDIDOS',
+    route: '/home'
   },
   {
-    name:'RECARGAS',
-    route:'/recharges'
+    name: 'RECARGAS',
+    route: '/recharges'
   },
   {
-    name:'SERVICIOS',
-    route:'/services'
+    name: 'SERVICIOS',
+    route: '/services'
   },
   {
-    name:'REPORTAR PROBLEMA',
-    route:'/support'
+    name: 'REPORTAR PROBLEMA',
+    route: '/support'
   },
-];
+  ];
   client: Socket;
   money = 0;
+  apiUrl = 'https://localhost:44378/Totem';
   services: string[] =
     ['cfe', 'virgin', 'tetv',
       'telcel', 'netflix', 'movistar',
       'cfe', 'virgin', 'tetv',
       'telcel', 'netflix', 'movistar']
-
+  db;
+  token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0b3RlbUB2ZW50ZWtzLmNvbSIsImp0aSI6IjY4NTZiYmIwLWZmNmItNDZmYS04ZTllLWRkNDcyYTNjOWY2ZiIsImVtYWlsIjoidG90ZW1AdmVudGVrcy5jb20iLCJNYWNoaW5lR1VJRCI6IkJEMzUwMEQ2LTk2OEMtNERGQS04NEZFLTk1NjJEMDlERTU2NyIsInVpZCI6ImE3MTFiODhkLTI3ODktNDhmOS1iNmY5LWJmOTgxM2NlYjc3YSIsInJvbGVzIjoiVG90ZW0iLCJleHAiOjE2NDA3ODEwMjYsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6IlNlY3VyZUFwaVVzZXIifQ.Eok2BmIPYo4BG2HO70FFYVu9tpQJ3l2vZbYdUJVyd3o";
   constructor(private router: Router,
     private ref: ChangeDetectorRef,
+    private httpClient: HttpClient,
     private electron: ElectronService) { }
 
   ngOnInit(): void {
-    console.log(this.electron.net)
+    console.log(this.electron.net);
+    // console.log(this.electron.db);
+    // let db = new this.electron.db.Database('db/electrondb.db');
+    // console.log(db);
+    // this.getAll();
     // this.client = new this.electron.net.Socket;
     // this.client.connect(2021, '192.168.1.156', () => {
     //   console.log('conexion iniciada');
@@ -48,6 +56,12 @@ export class HomeComponent implements OnInit {
     // this.client.on('data', (data) => {
     //   this.action(data)
     // })
+  }
+
+  getAll() {
+    this.httpClient.get(`${this.apiUrl}/GetAll`, {
+      headers: { 'Authorization': `Bearer ${this.token}`, 'Access-Control-Allow-Origin': '*' },
+    }).subscribe(data => console.log(data));
   }
 
   action(data) {
