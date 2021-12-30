@@ -1,0 +1,30 @@
+<div class="vh-100 d-flex flex-column justify-content-between">
+    <!-- CAROUSEL -->
+    <app-carousel></app-carousel>
+
+    <mat-horizontal-stepper *ngIf="typeService === 'REF1'" [linear]='false'>
+        <mat-step *ngIf="service">
+            <app-entry-reference [service]="service"></app-entry-reference>
+
+        </mat-step>
+
+    </mat-horizontal-stepper>
+    <mat-horizontal-stepper *ngIf="typeService === 'PREPAGO'" [linear]='false'>
+        <mat-step>
+            <h1>PREPAGO</h1>
+        </mat-step>
+
+    </mat-horizontal-stepper>
+    <mat-horizontal-stepper *ngIf="typeService === 'REF2'" [linear]='false'>
+        <mat-step>
+            <h1>REFERENCIA CON OPCIONES</h1>
+        </mat-step>
+
+    </mat-horizontal-stepper>
+
+
+
+
+    <app-footer [routerLink]="['/home']"></app-footer>
+
+</div>
