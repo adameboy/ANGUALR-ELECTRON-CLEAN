@@ -17,7 +17,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 
     <div class="form-group round mt-4">
       <label>
-        <span class="blue">Número de teléfono:</span>
+        <span class="blue">Ingresa tu cupón:</span>
       </label>
       <input id="cupon" class="form-control form-control-lg py-4" type="text" placeholder="h563rfht5123e">
     </div>
@@ -35,6 +35,7 @@ import { MatDialogRef } from '@angular/material/dialog';
         </div>
       </div>
     </div>
+    
 
     <div class="row m-0 p-0 justify-content-center mt-3">
       <div class="col-5">

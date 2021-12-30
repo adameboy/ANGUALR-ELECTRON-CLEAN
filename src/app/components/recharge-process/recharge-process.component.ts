@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { HelpService } from '../../services/help.service';
 import { Router } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper';
+import { typeService } from '../service-process/service-process.component';
 
 @Component({
   selector: 'app-recharge-process',
@@ -10,26 +11,24 @@ import { MatStepper } from '@angular/material/stepper';
   styleUrls: ['./recharge-process.component.scss']
 })
 export class RechargeProcessComponent implements OnInit {
-  subscription: Subscription;
+  service = null;
+  typeService: typeService = 'PREPAGO';
+  subscription: Subscription = new Subscription();
   viewCoupon: boolean = false;
   constructor(private helpService: HelpService, private router: Router) { }
 
   ngOnInit(): void {
-    // this.subscription = this.helpService.currentCarrier.subscribe(data => {
-    //   console.log('esto trae data',data);
-    //   if (data.carrier === '')
-    //     return this.router.navigate(['/recharge']);
-    // });
+    this.subscription = this.helpService.selectedService.subscribe(data => this.service = data);
   }
 
-  changeView(event:boolean){
+  changeView(event: boolean) {
     this.viewCoupon = event;
   }
   ngOnDestroy(): void {
-    // this.subscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
-  stepperEvent(stepper:MatStepper){
+  stepperEvent(stepper: MatStepper) {
     stepper.next();
   }
 

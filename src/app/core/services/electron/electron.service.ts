@@ -6,6 +6,7 @@ import { ipcRenderer, webFrame } from 'electron';
 import * as childProcess from 'child_process';
 import * as fs from 'fs';
 import * as net from 'net';
+import * as mysql from 'mysql';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +16,7 @@ export class ElectronService {
   childProcess: typeof childProcess;
   fs: typeof fs;
   net: typeof net;
-  // db: typeof sqlite3;
+  mysql:typeof mysql;
 
   constructor() {
     // Conditional imports
@@ -25,8 +26,7 @@ export class ElectronService {
       this.net = window.require('net');
       this.childProcess = window.require('child_process');
       this.fs = window.require('fs');
-      // this.db = window.require('sqlite3');
-
+      this.mysql = window.require('mysql');
       // Notes :
       // * A NodeJS's dependency imported with 'window.require' MUST BE present in `dependencies` of both `app/package.json`
       // and `package.json (root folder)` in order to make it work here in Electron's Renderer process (src folder)

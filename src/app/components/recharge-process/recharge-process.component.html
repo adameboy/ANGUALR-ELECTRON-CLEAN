@@ -2,21 +2,22 @@
     <!-- CAROUSEL -->
     <app-carousel></app-carousel>
 
-    <mat-horizontal-stepper [linear]='false' #stepper>
-        <mat-step>
-            <app-choose-balance></app-choose-balance>
+    <mat-horizontal-stepper class="h-100" [linear]='false' #stepper>
+        <mat-step *ngIf="service">
+            <app-choose-balance [service]="service" [title]="'RECARGAS'"></app-choose-balance>
         </mat-step>
-        <mat-step>
-            <app-entry-number></app-entry-number>
+        <mat-step *ngIf="service">
+            <app-entry-number [service]="service"></app-entry-number>
         </mat-step>
-        <mat-step>
-            <app-verify-amount></app-verify-amount>
+        <mat-step *ngIf="service">
+            <app-verify-amount [service]="service"></app-verify-amount>
         </mat-step>
-        <mat-step>
-            <app-insert-money (stepperEvent)="stepperEvent(stepper)"></app-insert-money>
+        <mat-step *ngIf="service">
+            <app-insert-money [typeService]="typeService" (stepperEvent)="stepperEvent(stepper)" [service]="service">
+            </app-insert-money>
         </mat-step>
-        <mat-step>
-            <h1>dasd</h1>
+        <mat-step *ngIf="service">
+                <app-sucess-pay [service]="service"></app-sucess-pay>
         </mat-step>
     </mat-horizontal-stepper>
 

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupportComponent implements OnInit {
   routes = [{
-    name: 'VENDIDOS',
+    name: 'MÁS VENDIDOS',
     route: '/home'
   },
   {

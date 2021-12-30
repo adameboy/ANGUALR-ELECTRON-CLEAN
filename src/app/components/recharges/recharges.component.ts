@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RECARGAS } from '../../data/queries';
 
 @Component({
   selector: 'app-recharges',
@@ -6,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recharges.component.scss']
 })
 export class RechargesComponent implements OnInit {
+  query = RECARGAS;
   routes = [{
-    name: 'VENDIDOS',
+    name: 'MÁS VENDIDOS',
     route: '/home'
   },
   {

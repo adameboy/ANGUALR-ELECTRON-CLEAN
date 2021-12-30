@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { HelpService } from '../../../services/help.service';
 
 @Component({
   selector: 'app-verify-amount',
   template: `
+<div class="d-flex flex-column justify-content-between h-100">
      <!-- TITLE -->
   <div class="container text-center">
      <div class="w-100 vendidos py-1 d-flex align-items-center justify-content-center">
@@ -12,16 +13,18 @@ import { HelpService } from '../../../services/help.service';
      </div>
  </div>
  <!-- CARRIER IMAGE -->
- <div class="container text-center my-5">
-   <div class="row">
-     <div *ngIf="dataCarrier.carrier != ''" class="col-6">
-     <img [src]='"assets/"+dataCarrier.carrier+".svg"' alt="">
-     </div>
-     <div class="col-6 grayContainer my-3">
-        <h1 class="blue m-0 p-0" style="font-weight: 700;">{{dataCarrier.carrier| titlecase}} {{dataCarrier.amount| currency : 'USD' : 'symbol' : '1.0-0' }}</h1>
-     </div>
-   </div>
- </div>
+ <div class="container text-center my-3">
+        <div class="row gx-5">
+            <div class="col-6">
+                <div class="imageContainer text-center">
+                <img class="mt-3 w-50" *ngIf="service" [src]="'data:image/jpeg;base64,'+service.Base64Imagen" alt="">
+                </div>
+            </div>
+            <div *ngIf="product" class="col-6 grayContainer my-3">
+                <h1 class="blue m-0 p-0" style="font-weight: 700;">{{service.NombreServicio}} {{product.Monto| currency : 'USD' : 'symbol' : '1.0-0' }}</h1>
+            </div>
+        </div>
+    </div>
 
  <div class="container">
    <h3 class="blue" style="font-weight: 500;">TU PAGO</h3>
@@ -82,24 +85,20 @@ import { HelpService } from '../../../services/help.service';
      </div>
    </div>  
  </div>
+</div>
   `,
   styles: [
   ]
 })
 export class VerifyAmountComponent implements OnInit {
   constructor(private helpService: HelpService) { }
-  dataCarrier = { carrier: '', amount: 0, number: '' };
-  subscription: Subscription;
+  @Input() service = null;
+  product = null;
+  subscription: Subscription = new Subscription();
   inputPhone: HTMLInputElement;
   inputAmount: HTMLInputElement;
   ngOnInit(): void {
-    this.subscription = this.helpService.currentCarrier.subscribe(data => {
-      this.dataCarrier = data;
-      if (data.number != '') {
-        this.inputAmount.value = '$' + String(this.dataCarrier.amount);
-        this.inputPhone.value = this.dataCarrier.number;
-      }
-    });
+    this.subscription = this.helpService.productSelectedSubject.subscribe(data => this.product = data);
   }
 
   ngAfterViewInit(): void {

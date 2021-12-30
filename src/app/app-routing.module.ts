@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RechargeGuard } from './guards/recharge.guard';
+import { ServiceGuard } from './guards/service.guard';
 const routes: Routes = [
   {
     path: 'home',
@@ -12,8 +13,13 @@ const routes: Routes = [
   },
   {
     path: 'recharge-process',
-    canActivate:[RechargeGuard],
+    canActivate:[ServiceGuard],
     loadChildren: () => import('./components/recharge-process/recharge-process.module').then(m => m.RechargeProcessModule)
+  },
+  {
+    path: 'service-process',
+    canActivate: [ServiceGuard],
+    loadChildren: () => import('./components/service-process/service-process.module').then(m => m.ServiceProcessModule)
   },
   {
     path: 'services',

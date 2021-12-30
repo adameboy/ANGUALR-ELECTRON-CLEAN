@@ -6,7 +6,7 @@ import { HelpService } from '../services/help.service';
 @Injectable({
   providedIn: 'root'
 })
-export class RechargeGuard implements CanActivate {
+export class ServiceGuard implements CanActivate {
   constructor(private helperService: HelpService) { }
   canActivate(
     route: ActivatedRouteSnapshot,

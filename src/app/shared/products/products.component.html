@@ -3,9 +3,18 @@
   <h1 class="blue m-0 p-0 ms-3" style="font-weight: 700;">{{title}}</h1>
 </div>
 
-<div class="containerServices row mx-2 my-5">
+<!-- <div class="containerServices row mx-2 my-5">
   <div (click)="setCarrier(service)" *ngFor="let service of services" [routerLink]="['/recharge-process']"  class="col-4 service">
     <img src="assets/{{service}}.svg" alt="">
+  </div>
+</div> -->
+<div *ngIf="visible" id="containerServices" class="containerServices row mx-2 my-5 overflow-auto pb-4">
+  <div (click)="redirect(service)" *ngFor="let service of servicios" class="col-4">
+    <div class="cardService mt-3">
+      <div *ngIf="servicios.length>0" class="content d-flex justify-content-center align-items-center">
+        <img [src]="'data:image/jpeg;base64,'+service.Base64Imagen" alt="">
+      </div>
+    </div>
   </div>
 </div>
 

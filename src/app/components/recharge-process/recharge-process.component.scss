@@ -1,5 +1,10 @@
-::ng-deep .mat-horizontal-stepper-header-container {
+
+  ::ng-deep .mat-horizontal-stepper-header-container {
     display: none !important;
   }
-  
-  
+    ::ng-deep .mat-horizontal-content-container{
+    height: 100%;
+    }
+    ::ng-deep .mat-horizontal-stepper-content{
+    height: 100%;
+    }

@@ -3,7 +3,9 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-entry-reference',
   template: `
-  <div class="container">
+<div class="d-flex flex-column justify-content-between h-100">
+
+  <div class="container mt-5">
     <div class="w-100 vendidos py-1 d-flex align-items-center justify-content-center">
         <!-- <i class='bx bx-plus-medical bx-sm blue mt-1'></i> -->
         <h1 class="blue m-0 p-0 ms-3" style="font-weight: 700;">DATOS DE LA TRANSACCIÓN</h1>
@@ -62,7 +64,7 @@ import { Component, Input, OnInit } from '@angular/core';
                     </div>
                 </div>
             </div>
-        </div>
+          </div>
 
       </div>
     </div>
@@ -71,14 +73,14 @@ import { Component, Input, OnInit } from '@angular/core';
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-3">
-         <button matStepperPrevious  class="btn w-100 orange-button">
+         <button routerLink="/home"  class="btn w-100 orange-button">
               <h3 class="text-light">
                   CANCELAR
               </h3>
           </button>
       </div>
       <div class="col-3">
-         <button matStepperPrevious  class="btn w-100 blue-button">
+         <button matStepperNext class="btn w-100 blue-button">
               <h3 class="text-light">
                   CONTINUAR
               </h3>
@@ -93,6 +95,7 @@ import { Component, Input, OnInit } from '@angular/core';
       </div> -->
     </div>
   </div>
+</div>
   `,
   styles: [
 

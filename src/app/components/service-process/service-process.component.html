@@ -1,25 +1,56 @@
 <div class="vh-100 d-flex flex-column justify-content-between">
     <!-- CAROUSEL -->
     <app-carousel></app-carousel>
-
-    <mat-horizontal-stepper *ngIf="typeService === 'REF1'" [linear]='false'>
+    <!-- REFRENCIA DIRECTA -->
+    <mat-horizontal-stepper class="h-100" *ngIf="typeService === 'REF1'" [linear]='false' #stepper>
         <mat-step *ngIf="service">
             <app-entry-reference [service]="service"></app-entry-reference>
-
         </mat-step>
-
+        <mat-step *ngIf="service">
+            <app-verify-pay [typeService]="typeService" [service]="service"></app-verify-pay>
+        </mat-step>
+        <mat-step *ngIf="service">
+            <app-insert-money [typeService]="typeService" (stepperEvent)="stepperEvent(stepper)" [service]="service">
+            </app-insert-money>
+        </mat-step>
+        <mat-step *ngIf="service">
+            <app-sucess-pay [service]="service"></app-sucess-pay>
+        </mat-step>
     </mat-horizontal-stepper>
-    <mat-horizontal-stepper *ngIf="typeService === 'PREPAGO'" [linear]='false'>
+    <!-- PREPAGO -->
+    <mat-horizontal-stepper #stepper2 class="h-100" *ngIf="typeService === 'PREPAGO'" [linear]='false'>
         <mat-step>
-            <h1>PREPAGO</h1>
+            <app-choose-balance [service]="service" [title]="'SERVICIOS'"></app-choose-balance>
         </mat-step>
-
+        <mat-step>
+            <app-verify-pay [typeService]="typeService" [service]="service"></app-verify-pay>
+        </mat-step>
+        <mat-step *ngIf="service">
+            <app-insert-money [typeService]="typeService" (stepperEvent)="stepperEvent(stepper2)" [service]="service">
+            </app-insert-money>
+        </mat-step>
+        <mat-step *ngIf="service">
+            <app-sucess-pay [service]="service"></app-sucess-pay>
+        </mat-step>
     </mat-horizontal-stepper>
-    <mat-horizontal-stepper *ngIf="typeService === 'REF2'" [linear]='false'>
+    <!-- REFERENCIA CON OPCIONES -->
+    <mat-horizontal-stepper #stepper3 class="h-100" *ngIf="typeService === 'REF2'" [linear]='false'>
         <mat-step>
-            <h1>REFERENCIA CON OPCIONES</h1>
+            <app-choose-balance [service]="service" [title]="'SERVICIOS'"></app-choose-balance>
         </mat-step>
-
+        <mat-step *ngIf="service">
+            <app-entry-reference [service]="service"></app-entry-reference>
+        </mat-step>
+        <mat-step *ngIf="service">
+            <app-verify-pay [typeService]="typeService" [service]="service"></app-verify-pay>
+        </mat-step>
+        <mat-step *ngIf="service">
+            <app-insert-money [typeService]="typeService" (stepperEvent)="stepperEvent(stepper3)" [service]="service">
+            </app-insert-money>
+        </mat-step>
+        <mat-step *ngIf="service">
+            <app-sucess-pay [service]="service"></app-sucess-pay>
+        </mat-step>
     </mat-horizontal-stepper>
 
 

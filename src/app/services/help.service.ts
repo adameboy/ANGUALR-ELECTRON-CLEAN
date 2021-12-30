@@ -7,18 +7,29 @@ import { Router } from '@angular/router';
 })
 export class HelpService {
 
-  private carrierSource = new BehaviorSubject({ carrier: '', amount: 0,number:''});
-  currentCarrier = this.carrierSource.asObservable();
+  public productSelectedSubject = new BehaviorSubject(null);
+  public selectedService = new BehaviorSubject(null);
+  currentService = this.selectedService.asObservable();
+  productSelected$ = this.productSelectedSubject.asObservable();
 
 
   constructor(private router: Router) { }
 
-  changeCarrier(data: { carrier: string, amount: number,number:string}) {
-    this.carrierSource.next(data);
+  selectProduct(data:any) {
+    this.productSelectedSubject.next(data);
   }
 
-  isRechargeSelected() {
-    if (this.carrierSource.value.carrier === '') this.router.navigate(['/recharge']);
-    return this.carrierSource.value.carrier != '';
+  // isRechargeSelected() {
+  //   if (this.carrierSource.value.carrier === '') this.router.navigate(['/recharge']);
+  //   return this.carrierSource.value.carrier != '';
+  // }
+
+  setConsultService(products: any[]) {
+    this.selectedService.next(products);
+  }
+
+  isServiceSelected(){
+    if (!this.selectedService.value) this.router.navigate(['/home']);
+    return this.selectedService.value != null;
   }
 }

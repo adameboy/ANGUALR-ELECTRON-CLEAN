@@ -2,7 +2,6 @@ import { app, BrowserWindow, screen } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as url from 'url';
-
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
   serve = args.some(val => val === '--serve');
@@ -48,6 +47,7 @@ function createWindow(): BrowserWindow {
     }));
   }
 
+
   // Emitted when the window is closed.
   win.on('closed', () => {
     // Dereference the window object, usually you would store window
@@ -60,6 +60,8 @@ function createWindow(): BrowserWindow {
 }
 
 try {
+
+
   // This method will be called when Electron has finished
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
@@ -82,6 +84,7 @@ try {
       createWindow();
     }
   });
+
 
 } catch (e) {
   // Catch Error

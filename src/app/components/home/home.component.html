@@ -9,13 +9,18 @@
   </button>
 
   <h1>DINERO INSERTADO: {{money|currency}}</h1> -->
+  
+  <!-- <div class="container overflow-auto" style="max-height: 1200px;">
+    <img *ngFor="let service of provedores" [src]="'data:image/jpeg;base64,'+service.Base64Imagen" alt="">
+  </div> -->
+  
 <div class="vh-100 d-flex flex-column justify-content-between">
   <!-- CAROUSEL -->
   <app-carousel></app-carousel>
 
   <div class="container mt-3">
 
-    <app-products [services]="services" [title]="'VENDIDOS'"></app-products>
+    <app-products [query]="query"   [title]="'MÁS VENDIDOS'"></app-products>
 
     <!-- FILL OF BUTTONS -->
     <div class="w-100 d-flex justify-content-between mt-3">
@@ -29,3 +34,5 @@
   <app-footer></app-footer>
 
 </div>
+
+
